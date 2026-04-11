@@ -3,7 +3,6 @@
 本项目当前保留并支持以下算法：
 
 - `FedAvg`
-- `SL`
 - `SplitFed`
 - `RingSFL`
 - `SFLMAC`
@@ -42,16 +41,13 @@ python main.py \
 - 例如 `SFLMAC_quickstart` 会自动选择 `SFLMAC` 算法。
 - 如果没有传 `--output`，结果会落在默认目录，建议始终传入。
 
-## 3. 五种算法最小示例
+## 3. 四种算法最小示例
 
 只需替换 `--output` 前缀即可切换算法：
 
 ```bash
 # FedAvg
 python main.py --benchmark resnet18_cifar10 --num_client 8 --global_epoch 5 --local_epoch 2 --bs 64 --lr 0.01 --alpha 5 --device cuda:0 --output FedAvg_demo
-
-# SL
-python main.py --benchmark resnet18_cifar10 --num_client 8 --global_epoch 5 --local_epoch 2 --bs 64 --lr 0.01 --alpha 5 --device cuda:0 --output SL_demo
 
 # SplitFed（可加 --split_point）
 python main.py --benchmark resnet18_cifar10 --num_client 8 --global_epoch 5 --local_epoch 2 --bs 64 --lr 0.01 --alpha 5 --device cuda:0 --split_point 2 --output SplitFed_demo
@@ -100,6 +96,6 @@ python main.py --benchmark resnet18_cifar10 --num_client 8 --global_epoch 5 --lo
 
 ## 6. 快速排错
 
-- 报错 `KeyError` 或算法不匹配：检查 `--output` 前缀是否是 `FedAvg/SL/SplitFed/RingSFL/SFLMAC`。
+- 报错 `KeyError` 或算法不匹配：检查 `--output` 前缀是否是 `FedAvg/SplitFed/RingSFL/SFLMAC`。
 - 显存不足：减小 `--bs`，或先用 `--device cpu` 验证流程。
 - 类别数不一致：`main.py` 会按 `benchmark` 自动修正 `num_classes`，一般不需要手改。
